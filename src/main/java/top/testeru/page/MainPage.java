@@ -24,6 +24,8 @@ public class MainPage {
 
         //3、跳转到通讯录页面
         webKeyWords.click(By.id("menu_contacts"));
+        //确定跳转
+        webKeyWords.waitUntil().until(webDriver -> webDriver.findElement(By.id("memberSearchInput")));
         return new ContactPage();
     }
     public void quite(){

@@ -33,12 +33,12 @@ public class FakerUtil {
         return faker.phoneNumber().phoneNumber();
     }
     public static String get_acctid(){
-        String s = faker.phoneNumber().subscriberNumber(12);
-        return s;
+        return faker.phoneNumber().subscriberNumber(12);
     }
     public static int getNum(int start,int end) {
         return (int)(Math.random()*(end-start+1)+start);
     }
+
 
 }
 

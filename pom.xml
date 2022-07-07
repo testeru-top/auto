@@ -35,6 +35,8 @@
         </allure.cmd.download.url>
         <selenium.verison>4.3.0</selenium.verison>
         <javafaker.verison>1.0.2</javafaker.verison>
+        <allure.dir>allure-results/${maven.build.timestamp}</allure.dir>
+<!--        <allure.report>target/allure-results/${maven.build.timestamp}</allure.report>-->
     </properties>
 
     <!--    物料清单 (BOM)-->
@@ -123,6 +125,12 @@
             <artifactId>javafaker</artifactId>
             <version>${javafaker.verison}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.11.0</version>
+        </dependency>
 
 
     </dependencies>
@@ -142,14 +150,9 @@
                         <!--                        <include>**/*Test.class</include>-->
                         <include>**/*Test</include>
                     </includes>
-                    <!--                    <excludes>-->
-                    <!--                        <exclude>com/testeru/suites/cases2/*Test.class</exclude>-->
-                    <!--                        <exclude>*Suite*Test</exclude>-->
-                    <!--                    </excludes>-->
-                    <properties>
-                        <!--                        <test>com.ceshiren.str.StrTest </test>-->
-                        <love>good</love>
-                    </properties>
+                    <systemPropertyVariables>
+                        <allure.results.directory>${allure.dir}</allure.results.directory>
+                    </systemPropertyVariables>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -186,6 +189,8 @@
                     <reportVersion>${allure.version}</reportVersion>
                     <allureDownloadUrl>${allure.cmd.download.url}/${allure.version}/allure-commandline-${allure.version}.zip</allureDownloadUrl>
                 </configuration>
+
+
             </plugin>
         </plugins>
     </build>
